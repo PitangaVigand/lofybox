@@ -1,6 +1,8 @@
 from PySide6.QtWidgets import QWidget, QLabel, QPushButton, QVBoxLayout, QHBoxLayout
 from PySide6.QtCore import QTimer, Qt
+from PySide6.QtCore import Signal, QObject
 from src.spotify_controller import start_or_resume_playlist, stop_playback
+from src.clockify_logger import start_time_entry, stop_time_entry
 
 
 class LofyBoxWindow(QWidget):
@@ -57,16 +59,20 @@ class LofyBoxWindow(QWidget):
             self.timer.stop()
             self.play_button.setText("▶️")
             stop_playback()
+            stop_time_entry()
         else:
             self.timer.start()
             self.play_button.setText("⏸️")
             start_or_resume_playlist()
+            start_time_entry("Focus Session")
         self.is_running = not self.is_running
 
     def update_timer(self):
         self.remaining_seconds -= 1
         if self.remaining_seconds <= 0:
             self.timer.stop()
+            stop_playback()
+            stop_time_entry()
             self.play_button.setText("✅")
         self.timer_label.setText(self.format_time(self.remaining_seconds))
 
