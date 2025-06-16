@@ -20,14 +20,6 @@ Perfect for creatives, students, freelancers, and anyone who values focus, mood,
 
 ---
 
-## 🖼️ Interface Preview
-
-> *(optional)* Add your app UI screenshot in `assets/screenshot.png`  
-> Example:  
-> ![Lofybox UI](assets/screenshot.png)
-
----
-
 ## 🚀 Getting Started
 
 ### 1. Clone the project
